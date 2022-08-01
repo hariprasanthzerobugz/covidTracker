@@ -6,3 +6,9 @@ export const searchValue = (key) => {
         payload: key,
     }
 }
+export const setStateList = (key) => {
+    return {
+        type: ActionTypes.SET_STATE_LIST,
+        payload: key,
+    }
+}

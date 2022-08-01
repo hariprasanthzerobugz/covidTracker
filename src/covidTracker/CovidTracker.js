@@ -1,4 +1,5 @@
 import React from 'react'
+import StateList from './body/StateList'
 import Header from './header/Header'
 import Topbar from './header/Topbar'
 
@@ -7,6 +8,7 @@ export const CovidTracker = () => {
     <div>
         <Header />
         <Topbar />
+        <StateList />
     </div>
   )
 }
