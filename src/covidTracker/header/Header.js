@@ -2,11 +2,9 @@ import React from 'react'
 
 const Header = () =>  {
   return (
-    <div className='container'>
-        <nav className="navbar navbar-light">
+        <nav className="font-monospace fs-5 navbar navbar-light p-2 text-bg-primary">
             Covid Tracker - India
         </nav>
-    </div>
   )
 }
 
