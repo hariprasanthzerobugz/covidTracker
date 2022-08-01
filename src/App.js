@@ -3,7 +3,7 @@ import { CovidTracker } from './covidTracker/CovidTracker';
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <CovidTracker />
     </div>
   );
