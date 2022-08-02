@@ -5,7 +5,7 @@ import Topbar from './header/Topbar'
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import { setStateList } from '../store/actions/actions';
-import { convertObjectToArrayOfObject } from './functions/functions'
+import { generateStateList } from './functions/functions'
 
 export const CovidTracker = () => {
 
@@ -20,7 +20,7 @@ export const CovidTracker = () => {
       const response = await axios.get(`https://data.covid19india.org/v4/min/data.min.json`).catch(err => {
           console.log("Err :", err);
       })
-      const data = await convertObjectToArrayOfObject(response?.data ?? {})
+      const data = await generateStateList(response?.data ?? {})
       dispatch(setStateList(data))
       setListData(data)
   }
