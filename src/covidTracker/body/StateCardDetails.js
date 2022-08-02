@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React, { memo, useState } from 'react'
 import './stateCard.css'
 import StateDelta from './StateDelta'
 import StateDelta7 from './StateDelta7'
 import StateTotal from './StateTotal'
 
-const StateCardDetails = ({ value: { total, delta, delta7 } }) => {
+const StateCardDetails = ({ value: { total, delta, delta7 }, district: { value: districtValue = false, data: districtData = {} } }) => {
 
     // * state
     const [carousel, setCarousel] = useState(0)
@@ -17,11 +17,15 @@ const StateCardDetails = ({ value: { total, delta, delta7 } }) => {
         <div className='d-flex justify-content-between'>
             <button type='button' className='btn btn-icon' onClick={e => changePreviousCarousel()}>{'<'}</button>
             {
-                carousel === 0 ? <StateTotal details={total} /> : carousel === 1 ? <StateDelta details={delta} /> : <StateDelta7 details={delta7} />
+                carousel === 0 ? 
+                <StateTotal details={districtValue ? districtData?.value?.total ?? {} : total} /> : 
+                carousel === 1 ? 
+                <StateDelta details={districtValue ? districtData?.value?.total ?? {} : delta} /> : 
+                <StateDelta7 details={districtValue ? districtData?.value?.total ?? {} : delta7} />
             }
             <button type='button' className='btn btn-icon' onClick={e => changeNextCarousel()}>{'>'}</button>
         </div>
     )
 }
 
-export default StateCardDetails
+export default memo(StateCardDetails)

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { memo, useState } from 'react'
 import StateCardDetails from './StateCardDetails'
 
 const StateCard = ({ name, value, districts }) => {
@@ -24,13 +24,11 @@ const StateCard = ({ name, value, districts }) => {
           </div>
         </div>
         <div className="card-body">
-
-          <StateCardDetails value={value} />
-
+          <StateCardDetails value={value} district={ { value: district ? true : false, data: districts.find(({name})=>name === district) } } />
         </div>
       </div>
     </div>
   )
 }
 
-export default StateCard
+export default memo(StateCard)
