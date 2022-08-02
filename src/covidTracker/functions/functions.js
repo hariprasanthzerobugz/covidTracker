@@ -1,2 +1,2 @@
 export const isObject = (object) => object ? object.constructor === Object : false
-export const convertObjectToArrayOfObject = (data) => isObject(data) ? Object.entries(data).map((e) => ( { [e[0]]: e[1] } )) : []
+export const convertObjectToArrayOfObject = (data) => isObject(data) ? Object.entries(data).map((e) => ( { name: e[0], value: e[1] } )) : []
