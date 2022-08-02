@@ -36,7 +36,7 @@ export const CovidTracker = () => {
     <div>
         <Header />
         <Topbar />
-        <StateList list={listData}  />
+        <StateList list={listData} temp={listData} />
     </div>
   )
 }
