@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux/es/exports';
+import { useDispatch } from 'react-redux';
 import { searchValue } from '../../store/actions/actions';
 
 const Topbar = () => {

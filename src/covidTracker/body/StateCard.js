@@ -1,8 +1,8 @@
 import React from 'react'
 
-const StateCard = () => {
+const StateCard = ({listData}) => {
   return (
-    <div>StateCard</div>
+    <div>{{listData}}</div>
   )
 }
 

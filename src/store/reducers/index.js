@@ -2,7 +2,7 @@ import { combineReducers } from "redux";
 import { covidTrackerReducer } from "./reducers";
 
 const reducers = combineReducers({
-    search: covidTrackerReducer,
+    covidTracker: covidTrackerReducer,
 })
 
 export default reducers;
