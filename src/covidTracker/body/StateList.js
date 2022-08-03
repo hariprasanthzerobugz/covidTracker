@@ -1,7 +1,7 @@
-import React, { memo, useEffect, useState } from 'react'
+import React, { memo } from 'react'
 import StateCard from './StateCard'
 
-const StateList = ({ list, temp }) => {
+const StateList = ({ list }) => {
 
     const render = list?.map(({ name, value, districts }, index) => <StateCard key={index} name={name} value={value} districts={districts} />)
 
@@ -14,4 +14,4 @@ const StateList = ({ list, temp }) => {
     )
 }
 
-export default StateList
+export default memo(StateList)

@@ -50,7 +50,7 @@ export const CovidTracker = () => {
     <div>
         <Header />
         <Topbar />
-        <StateList list={listData} temp={tempData} />
+        <StateList list={listData} />
     </div>
   )
 }
