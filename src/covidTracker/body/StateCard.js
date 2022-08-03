@@ -28,9 +28,6 @@ const StateCard = ({ name, value, districts, dates }) => {
           </div>
         </div>
         <div className="card-body">
-          {
-            console.log('date', date)
-          }
           <StateCardDetails 
           value={value} 
           district={ { value: district ? true : false, data: districts.find(({name})=>name === district) } } 

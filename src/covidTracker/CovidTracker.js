@@ -4,7 +4,7 @@ import Header from './header/Header'
 import Topbar from './header/Topbar'
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
-import { setStateList, searchValue, setDateStateList } from '../store/actions/actions';
+import { setStateList } from '../store/actions/actions';
 import { generateStateList, generateStateListWithDate, searhByName } from './functions/functions'
 import store from '../store/store';
 
