@@ -12,3 +12,9 @@ export const setStateList = (key) => {
         payload: key,
     }
 }
+export const setFiltedStateList = (key) => {
+    return {
+        type: ActionTypes.FILTERD_STATE_LIST,
+        payload: key,
+    }
+}

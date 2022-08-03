@@ -1,15 +1,17 @@
-import React, { memo } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import StateCard from './StateCard'
 
-const StateList = ({list}) => {
+const StateList = ({ list, temp }) => {
 
-  return (
-    <div className='row'>
-        {
-            list?.map(({name, value, districts}, index) => <StateCard key={index} name={name} value={value} districts={districts} />)
-        }
-    </div>
-  )
+    const render = list?.map(({ name, value, districts }, index) => <StateCard key={index} name={name} value={value} districts={districts} />)
+
+    return (
+        <div className='row'>
+            {
+                render
+            }
+        </div>
+    )
 }
 
-export default memo(StateList)
+export default StateList

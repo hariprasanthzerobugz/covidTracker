@@ -15,7 +15,6 @@ const Topbar = () => {
             e.preventDefault();
             const value = e?.target?.value ?? null
             setSearch(value)
-            console.log('keyup');
             dispatch(searchValue(search))
         }
     }

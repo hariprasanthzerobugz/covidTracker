@@ -2,7 +2,8 @@ import { ActionTypes } from "../constants/actionTypes";
 
 const initialState = {
     search: null,
-    stateList: []
+    stateList: [],
+    filterdStateList: [],
 }
 export const covidTrackerReducer = (state = initialState, { type, payload }) => {
     switch (type) {
@@ -10,6 +11,8 @@ export const covidTrackerReducer = (state = initialState, { type, payload }) => 
             return { ...state, search: payload };
         case ActionTypes.SET_STATE_LIST:
             return { ...state, stateList: payload };
+        case ActionTypes.FILTERD_STATE_LIST:
+            return { ...state, filterdStateList: payload };
         default:
             return state;
     }
