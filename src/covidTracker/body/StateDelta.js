@@ -1,24 +1,34 @@
 import React from 'react'
 
-const StateDelta = ({details}) => {
+const StateDelta = ({ details, isDate = false }) => {
   return (
     <div className='text-center'>
-        <div>Delta</div>
-        <div className='d-flex justify-content-evenly'>
-            <div>Tested</div>
-            <div>:</div>
-            <div>{details?.tested ?? 0}</div>
-        </div>
-        <div className='d-flex justify-content-evenly'>
-            <div>Vaccinated One</div>
-            <div>:</div>
-            <div>{details?.vaccinated1 ?? 0}</div>
-        </div>
-        <div className='d-flex justify-content-evenly'>
-            <div>Vaccinated Two</div>
-            <div>:</div>
-            <div>{details?.vaccinated2 ?? 0}</div>
-        </div>
+      <div>Delta</div>
+      {
+        isDate ?
+          <div className='d-flex justify-content-evenly'>
+            <div>Confirmed</div>
+            <div>: {details?.confirmed ?? 0}</div>
+          </div>
+          :
+          <div>
+            <div className='d-flex justify-content-evenly'>
+              <div>Tested</div>
+              <div>:</div>
+              <div>{details?.tested ?? 0}</div>
+            </div>
+            <div className='d-flex justify-content-evenly'>
+              <div>Vaccinated One</div>
+              <div>:</div>
+              <div>{details?.vaccinated1 ?? 0}</div>
+            </div>
+            <div className='d-flex justify-content-evenly'>
+              <div>Vaccinated Two</div>
+              <div>:</div>
+              <div>{details?.vaccinated2 ?? 0}</div>
+            </div>
+          </div>
+      }
     </div>
   )
 }

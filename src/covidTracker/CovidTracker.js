@@ -11,58 +11,54 @@ import store from '../store/store';
 
 export const CovidTracker = () => {
 
-  // * component state
-  const [listData, setListData] = useState([])
-  const [tempData, setTempData] = useState([])
-  const [listDataWithDate, setListDataWithDate] = useState([])
+    // * component state
+    const [listData, setListData] = useState([])
+    const [tempData, setTempData] = useState([])
 
-  // * store state
-  const { search } = useSelector((state) => state?.covidTracker);
+    // * store state
+    const { search } = useSelector((state) => state?.covidTracker);
 
-  // * dispatch
-  const dispatch = useDispatch();
+    // * dispatch
+    const dispatch = useDispatch();
 
-  // * state list Data
-  const stateListData = async () => {
-      const response = await axios.get(`https://data.covid19india.org/v4/min/data.min.json`).catch(err => {
-          console.log("Err :", err);
-      })
-      const data = await generateStateList(response?.data ?? {})
-      await dispatch(setStateList(data))
-      await setListData(data)
-      await setTempData(data)
-  }
+    // * state list Data
+    const stateListData = async () => {
+        const response1 = await axios.get(`https://data.covid19india.org/v4/min/data.min.json`).catch(err => {
+            console.log("Err :", err);
+        })
+        const response2 = await axios.get(`https://data.covid19india.org/v4/min/timeseries.min.json`).catch(err => {
+            console.log("Err :", err);
+        })
+        const data1 = await generateStateList(response1?.data ?? {})
+        const data2 = await generateStateListWithDate(response2?.data ?? {})
+        const final = data1.map(e => {
+            const obj = data2.find(({ name }) => name === e.name)
+            return { ...obj, ...e }
+        })
+        await dispatch(setStateList(final))
+        await setListData(final)
+        await setTempData(final)
+    }
 
-  // * date state list
-  const dateStateListData = async () => {
-    const response = await axios.get(`https://data.covid19india.org/v4/min/timeseries.min.json`).catch(err => {
-        console.log("Err :", err);
-    })
-    const data = await generateStateListWithDate(response?.data ?? {})
-    await dispatch(setDateStateList(data))
-    await setListDataWithDate(data)
-}
-
-  // * used for call state list
-  useEffect(() => {
-      return () => {
-          stateListData()
-          dateStateListData()
-      }
-  }, [])
+    // * used for call state list
+    useEffect(() => {
+        return () => {
+            stateListData()
+        }
+    }, [])
     // * effects
     useEffect(() => {
         return () => {
-            const {covidTracker: { search: searchText }} = store.getState()
+            const { covidTracker: { search: searchText } } = store.getState()
             listData?.length && setListData(searhByName(searchText, tempData))
         }
     }, [search])
 
-  return (
-    <div>
-        <Header />
-        <Topbar />
-        <StateList list={listData} />
-    </div>
-  )
+    return (
+        <div>
+            <Header />
+            <Topbar />
+            <StateList list={listData} />
+        </div>
+    )
 }

@@ -4,8 +4,6 @@ const initialState = {
     search: null,
     date: null,
     stateList: [],
-    dateStateList: [],
-    listData: [],
 }
 export const covidTrackerReducer = (state = initialState, { type, payload }) => {
     switch (type) {
@@ -15,10 +13,6 @@ export const covidTrackerReducer = (state = initialState, { type, payload }) => 
             return { ...state, stateList: payload };
         case ActionTypes.DATE_SEARCH:
             return { ...state, date: payload };
-        case ActionTypes.SET_DATE_STATE_LIST:
-            return { ...state, dateStateList: payload };
-        case ActionTypes.SET_LIST_DATA:
-            return { ...state, listData: payload };
         default:
             return state;
     }

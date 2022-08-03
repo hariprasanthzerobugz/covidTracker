@@ -1,7 +1,11 @@
 import React, { memo, useState } from 'react'
+import { useSelector } from 'react-redux';
 import StateCardDetails from './StateCardDetails'
 
-const StateCard = ({ name, value, districts }) => {
+const StateCard = ({ name, value, districts, dates }) => {
+
+    // * store state
+    const { date } = useSelector((state) => state?.covidTracker);
 
   // * states
   const [district, setDistrict] = useState('')
@@ -24,7 +28,14 @@ const StateCard = ({ name, value, districts }) => {
           </div>
         </div>
         <div className="card-body">
-          <StateCardDetails value={value} district={ { value: district ? true : false, data: districts.find(({name})=>name === district) } } />
+          {
+            console.log('date', date)
+          }
+          <StateCardDetails 
+          value={value} 
+          district={ { value: district ? true : false, data: districts.find(({name})=>name === district) } } 
+          date={ { value: date ? true : false, data: dates.find(({name}) => name === date) } }
+          />
         </div>
       </div>
     </div>

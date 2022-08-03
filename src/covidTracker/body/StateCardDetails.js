@@ -4,7 +4,7 @@ import StateDelta from './StateDelta'
 import StateDelta7 from './StateDelta7'
 import StateTotal from './StateTotal'
 
-const StateCardDetails = ({ value: { total, delta, delta7 }, district: { value: districtValue = false, data: districtData = {} } }) => {
+const StateCardDetails = ({ value: { total, delta, delta7 }, district: { value: districtValue = false, data: districtData = {} }, date: { value: dateValue = false, data: dateData = {}  } }) => {
 
     // * state
     const [carousel, setCarousel] = useState(0)
@@ -18,10 +18,10 @@ const StateCardDetails = ({ value: { total, delta, delta7 }, district: { value: 
             <button type='button' className='btn btn-icon' onClick={e => changePreviousCarousel()}>{'<'}</button>
             {
                 carousel === 0 ? 
-                <StateTotal details={districtValue ? districtData?.value?.total ?? {} : total} /> : 
+                <StateTotal details={districtValue ? districtData?.value?.total ?? {} : (dateValue ? dateData?.value?.total : total)} isDate={dateValue} /> : 
                 carousel === 1 ? 
-                <StateDelta details={districtValue ? districtData?.value?.total ?? {} : delta} /> : 
-                <StateDelta7 details={districtValue ? districtData?.value?.total ?? {} : delta7} />
+                <StateDelta details={districtValue ? districtData?.value?.delta ?? {} : (dateValue ? dateData?.value?.delta : delta)} isDate={dateValue} /> : 
+                <StateDelta7 details={districtValue ? districtData?.value?.delta7 ?? {} : (dateValue ? dateData?.value?.delta7 : delta7)} isDate={dateValue} />
             }
             <button type='button' className='btn btn-icon' onClick={e => changeNextCarousel()}>{'>'}</button>
         </div>

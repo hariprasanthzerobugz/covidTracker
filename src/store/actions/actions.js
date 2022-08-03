@@ -12,18 +12,6 @@ export const setStateList = (key) => {
         payload: key,
     }
 }
-export const setDateStateList = (key) => {
-    return {
-        type: ActionTypes.SET_DATE_STATE_LIST,
-        payload: key,
-    }
-}
-export const setListDataStore = (key) => {
-    return {
-        type: ActionTypes.SET_LIST_DATA,
-        payload: key,
-    }
-}
 export const dateValue = (key) => {
     return {
         type: ActionTypes.DATE_SEARCH,
