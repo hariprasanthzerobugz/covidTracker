@@ -4,8 +4,8 @@ import Header from './header/Header'
 import Topbar from './header/Topbar'
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
-import { setStateList, searchValue } from '../store/actions/actions';
-import { generateStateList, searhByName } from './functions/functions'
+import { setStateList, searchValue, setDateStateList } from '../store/actions/actions';
+import { generateStateList, generateStateListWithDate, searhByName } from './functions/functions'
 import store from '../store/store';
 
 
@@ -14,6 +14,7 @@ export const CovidTracker = () => {
   // * component state
   const [listData, setListData] = useState([])
   const [tempData, setTempData] = useState([])
+  const [listDataWithDate, setListDataWithDate] = useState([])
 
   // * store state
   const { search } = useSelector((state) => state?.covidTracker);
@@ -32,10 +33,21 @@ export const CovidTracker = () => {
       await setTempData(data)
   }
 
+  // * date state list
+  const dateStateListData = async () => {
+    const response = await axios.get(`https://data.covid19india.org/v4/min/timeseries.min.json`).catch(err => {
+        console.log("Err :", err);
+    })
+    const data = await generateStateListWithDate(response?.data ?? {})
+    await dispatch(setDateStateList(data))
+    await setListDataWithDate(data)
+}
+
   // * used for call state list
   useEffect(() => {
       return () => {
           stateListData()
+          dateStateListData()
       }
   }, [])
     // * effects
