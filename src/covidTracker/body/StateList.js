@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
 import Topbar from '../header/Topbar'
-import StateCard from './StateCard'
+import StateCard from './stateCard/StateCard'
 
 const StateList = ({ list }) => {
 

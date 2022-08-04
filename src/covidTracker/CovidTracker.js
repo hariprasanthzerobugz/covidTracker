@@ -7,7 +7,7 @@ import { setStateList } from '../store/actions/actions';
 import { generateStateList, generateStateListWithDate, searhByName } from './functions/functions'
 import store from '../store/store';
 import { Routes, Route } from "react-router-dom";
-import StateDetails from './body/StateDetails';
+import StateDetails from './body/stateDetails/StateDetails';
 
 
 export const CovidTracker = () => {
