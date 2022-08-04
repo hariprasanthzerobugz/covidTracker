@@ -67,7 +67,7 @@ const Topbar = () => {
         {/* FROM: 2020-01-30 - To: 2021-10-31 */}
       </div>
 
-      <div className='mx-5 text-center'>
+      <div className='text-center'>
               <select name="sortby" placeholder='Sort by' value={sort} className='form-control'
                 onChange={e => sortChange(e)}>
                 <option value=''>Sort by</option>

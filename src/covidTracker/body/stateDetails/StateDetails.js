@@ -36,6 +36,13 @@ const StateDetails = () => {
     setDate('')
   }
 
+  // * sort
+  const [sort, setSort] = useState('')
+  const sortChange = (e) => {
+    const value = e?.target?.value ?? ''
+    setSort(value)
+  }
+
   return (
     <div>
       <nav className="border-bottom d-flex header-bg justify-content-start mx-3 navbar navbar-dark" >
@@ -47,18 +54,31 @@ const StateDetails = () => {
         </div>
 
         <div className='mx-5'>
-              <select name="districts" placeholder='Districts' value={district} className='form-control'
-                onChange={e => districtChange(e)}>
-                <option value=''>All</option>
-                {
-                  details?.districts?.map(({ name }, index) => <option key={index} value={name}>{name}</option>)
-                }
+          <select name="districts" placeholder='Districts' value={district} className='form-control'
+            onChange={e => districtChange(e)}>
+            <option value=''>All</option>
+            {
+              details?.districts?.map(({ name }, index) => <option key={index} value={name}>{name}</option>)
+            }
+          </select>
+        </div>
+
+        <div className=''>
+              <select name="sortby" placeholder='Sort by' value={sort} className='form-control'
+                onChange={e => sortChange(e)}>
+                <option value=''>Sort by</option>
+                <option value='confirmedAsc'>Confirmed Ascending</option>
+                <option value='confirmedDesc'>Confirmed Descending</option>
+                <option value='recoveredAsc'>Recovered Ascending</option>
+                <option value='recoveredDesc'>Recovered Descending</option>
+                <option value='decasedAsc'>Decased Ascending</option>
+                <option value='decasedDesc'>Decased Descending</option>
               </select>
         </div>
 
       </nav>
 
-      <StateDetailsTable details={details} date={date} district={district} />
+      <StateDetailsTable details={details} date={date} district={district} sort={sort} />
 
     </div>
   )
