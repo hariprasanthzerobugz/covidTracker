@@ -43,7 +43,7 @@ const StateDetails = () => {
         <div className='mx-5'>
               <select name="districts" placeholder='Districts' value={district} className='form-control'
                 onChange={e => setDistrict(e?.target?.value)}>
-                <option value='' disabled>Districs</option>
+                <option value=''>All</option>
                 {
                   details?.districts?.map(({ name }, index) => <option key={index} value={name}>{name}</option>)
                 }
@@ -52,7 +52,7 @@ const StateDetails = () => {
 
       </nav>
 
-      <StateDetailsTable details={details} date={date} />
+      <StateDetailsTable details={details} date={date} district={district} />
 
     </div>
   )

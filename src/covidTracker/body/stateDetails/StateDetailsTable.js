@@ -1,10 +1,13 @@
 import React from 'react'
 import StateDetailsTableRow from './StateDetailsTableRow'
 
-const StateDetailsTable = ({ details, date }) => {
+const StateDetailsTable = ({ details, date, district }) => {
 
     const dates = details?.dates?.length ? details.dates : []
-    const filtered = date ? dates.filter(({name}) => name === date) : dates
+    const districts = details?.districts?.length ? details.districts : []
+    const filtered = district ? 
+    districts.filter(({name}) => name === district) : 
+    date ? dates.filter(({name}) => name === date) : dates
 
     const render = filtered?.length ? filtered?.map((e, index) => <StateDetailsTableRow key={index} data={e} />) : <tr></tr>
     
@@ -13,7 +16,7 @@ const StateDetailsTable = ({ details, date }) => {
             <table className="table table-bordered">
                 <thead>
                     <tr>
-                        <th scope="col">Date</th>
+                        <th scope="col">{ district ? 'District' : 'Date' }</th>
                         <th scope="col">Confirmed</th>
                         <th scope="col">Recovered</th>
                         <th scope="col">Deceased</th>

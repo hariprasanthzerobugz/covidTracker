@@ -20,7 +20,7 @@ const StateCard = ({ name, value, districts, dates }) => {
             <div>
               <select name="districts" placeholder='Districts' value={district} className='form-control'
                 onChange={e => setDistrict(e?.target?.value)}>
-                <option value='' disabled>Districs</option>
+                <option value=''>All</option>
                 {
                   districts?.map(({ name }, index) => <option key={index} value={name}>{name}</option>)
                 }
