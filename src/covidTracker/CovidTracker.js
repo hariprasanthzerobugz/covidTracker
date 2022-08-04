@@ -4,7 +4,7 @@ import Header from './header/Header'
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { setStateList, sortValue } from '../store/actions/actions';
-import { generateStateList, generateStateListWithDate, searhByName, sortAscTotalAffected, sortAscTotalConfirmed, sortAscTotalVaccinated, sortDescTotalAffected, sortDescTotalConfirmed, sortDescTotalVaccinated } from './functions/functions'
+import { generateStateList, generateStateListWithDate, searhByName, sortAsc, sortAscTotalAffected, sortAscTotalConfirmed, sortAscTotalConfirmedWithDate, sortAscTotalVaccinated, sortDescTotalAffected, sortDescTotalConfirmed, sortDescTotalConfirmedWithDate, sortDescTotalVaccinated } from './functions/functions'
 import store from '../store/store';
 import { Routes, Route } from "react-router-dom";
 import StateDetails from './body/stateDetails/StateDetails';
@@ -17,7 +17,7 @@ export const CovidTracker = () => {
     const [tempData, setTempData] = useState([])
 
     // * store state
-    const { search, sort } = useSelector((state) => state?.covidTracker);
+    const { search, sort, date } = useSelector((state) => state?.covidTracker);
 
     // * dispatch
     const dispatch = useDispatch();
@@ -52,7 +52,7 @@ export const CovidTracker = () => {
         return () => {
             const { covidTracker: { search: searchText } } = store.getState()
             setListData(searhByName(searchText, tempData))
-            dispatch(sortValue(''))
+            dispatch(sortValue('asc'))
         }
     }, [listData.length, search, tempData])
     // * sort
@@ -61,9 +61,13 @@ export const CovidTracker = () => {
             const { covidTracker: { sort: sortText } } = store.getState()
             console.log(listData.length)
             if(sortText === 'confirmedAscending') {
+                date ? 
+                setListData(sortAscTotalConfirmedWithDate([...listData], date)) :
                 setListData(sortAscTotalConfirmed([...listData]))
             }
             if(sortText === 'confirmedDescending') {
+                date ? 
+                setListData(sortDescTotalConfirmedWithDate([...listData], date)) :
                 setListData(sortDescTotalConfirmed([...listData]))
             }
             if(sortText === 'affectedAscending') {
@@ -78,6 +82,7 @@ export const CovidTracker = () => {
             if(sortText === 'vaccinatedDescending') {
                 setListData(sortDescTotalVaccinated([...listData]))
             }
+            if(sortText === 'asc') setListData(sortAsc([...listData], 'name'))
         }
         }, [listData.length, sort])
 

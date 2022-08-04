@@ -27,6 +27,7 @@ const Topbar = () => {
     const value = e?.target?.value ?? null
     setDate(value)
     dispatch(dateValue(value))
+    dispatch(sortValue('asc'))
   }
 
   // * sort
@@ -56,7 +57,7 @@ const Topbar = () => {
       <div className='mx-5 text-center'>
               <select name="sortby" placeholder='Sort by' value={sort} className='form-control'
                 onChange={e => sortChange(e)}>
-                <option value=''>Sort by</option>
+                <option value='asc'>Sort by</option>
                 <option value='confirmedAscending'>Confirmed Ascending</option>
                 <option value='confirmedDescending'>Confirmed Descending</option>
                 <option value='affectedAscending'>Affected Percentage Ascending</option>

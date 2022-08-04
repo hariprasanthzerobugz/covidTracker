@@ -19,6 +19,24 @@ export const sortDescTotalConfirmed = (array) => {
        return array.sort((a,b) => b.value.total.confirmed-a.value.total.confirmed)
     } else return []
 }
+export const sortAscTotalConfirmedWithDate = (array, date) => {
+    if(array && array.length) {
+       return array.sort((a,b) => {
+        const aa = a?.dates?.find(({name}) => name === date)?.value?.total?.confirmed ?? 0
+        const bb = b?.dates?.find(({name}) => name === date)?.value?.total?.confirmed ?? 0
+        return aa-bb
+       })
+    } else return []
+}
+export const sortDescTotalConfirmedWithDate = (array, date) => {
+    if(array && array.length) {
+       return array.sort((a,b) =>  {
+        const aa = a?.dates?.find(({name}) => name === date)?.value?.total?.confirmed ?? 0
+        const bb = b?.dates?.find(({name}) => name === date)?.value?.total?.confirmed ?? 0
+        return bb-aa
+       })
+    } else return []
+}
 export const sortAscTotalAffected = (array) => {
     if(array && array.length) {
        return array.sort((a,b) => a.value.total.deceased-b.value.total.deceased)
