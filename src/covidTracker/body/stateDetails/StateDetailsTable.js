@@ -1,7 +1,12 @@
 import React from 'react'
 import StateDetailsTableRow from './StateDetailsTableRow'
 
-const StateDetailsTable = ({ details }) => {
+const StateDetailsTable = ({ details, date }) => {
+
+    const render = details?.dates?.length && date ? 
+    details?.dates?.filter(({name}) => name === date)?.map((e, index) => <StateDetailsTableRow key={index} data={e} />) :
+    details?.dates?.map((e, index) => <StateDetailsTableRow key={index} data={e} />)
+
     return (
         <div className='mt-3'>
             <table className="table table-bordered">
@@ -17,7 +22,7 @@ const StateDetailsTable = ({ details }) => {
                 </thead>
                 <tbody>
                     {
-                        details?.dates?.length && details?.dates?.map((e, index) => <StateDetailsTableRow key={index} data={e} />)
+                        render
                     }
                 </tbody>
             </table>

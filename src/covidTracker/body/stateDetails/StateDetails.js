@@ -52,7 +52,7 @@ const StateDetails = () => {
 
       </nav>
 
-      <StateDetailsTable details={details} />
+      <StateDetailsTable details={details} date={date} />
 
     </div>
   )
