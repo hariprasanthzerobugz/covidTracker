@@ -1,6 +1,7 @@
 .date-description {
     font-size: 0.6rem;
 }
+
 .second-nab-bar {
-    margin-top: -1rem;
+    margin-top: -1rem !important;
 }

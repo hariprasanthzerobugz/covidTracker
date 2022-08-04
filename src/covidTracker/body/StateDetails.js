@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 import { useParams } from "react-router-dom";
+import TopbarForState from '../header/TopbarForState';
 
 const StateDetails = () => {
     // * params
@@ -23,6 +24,7 @@ const StateDetails = () => {
 
   return (
     <div>
+      <TopbarForState />
       StateDetails 
       {
         console.log(details)
@@ -31,4 +33,4 @@ const StateDetails = () => {
   )
 }
 
-export default StateDetails
+export default memo(StateDetails)

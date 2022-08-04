@@ -1,4 +1,5 @@
 import React, { memo } from 'react'
+import Topbar from '../header/Topbar'
 import StateCard from './StateCard'
 
 const StateList = ({ list }) => {
@@ -7,6 +8,7 @@ const StateList = ({ list }) => {
 
     return (
         <div className='row'>
+        <Topbar />
             {
                 render
             }

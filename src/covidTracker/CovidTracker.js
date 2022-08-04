@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import StateList from './body/StateList'
 import Header from './header/Header'
-import Topbar from './header/Topbar'
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { setStateList } from '../store/actions/actions';
@@ -59,7 +58,6 @@ export const CovidTracker = () => {
     return (
         <div>
             <Header />
-            <Topbar />
             <Routes>
         <Route path="/" element={<StateList list={listData} />} />
         <Route path="state/:state" element={<StateDetails />} />
