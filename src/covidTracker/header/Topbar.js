@@ -1,10 +1,23 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import { dateValue, searchValue, sortValue } from '../../store/actions/actions';
+import store from '../../store/store';
 import './topbar.css'
 
 const Topbar = () => {
   const dispatch = useDispatch();
+
+  // * store state
+  const { sort: stateSort } = useSelector((state) => state?.covidTracker);
+
+  // * effect
+  useEffect(() => {
+    return () => {
+      const { covidTracker: { sort: sortText } } = store.getState()
+      sortText === 'asc' && setSort('asc')
+    }
+  }, [stateSort])
+  
 
   // * search
   const [search, setSearch] = useState('')
