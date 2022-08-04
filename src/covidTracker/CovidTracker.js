@@ -4,7 +4,7 @@ import Header from './header/Header'
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { setStateList, sortValue } from '../store/actions/actions';
-import { generateStateList, generateStateListWithDate, searhByName, sortAsc, sortAscTotalAffected, sortAscTotalConfirmed, sortAscTotalConfirmedWithDate, sortAscTotalVaccinated, sortDescTotalAffected, sortDescTotalConfirmed, sortDescTotalConfirmedWithDate, sortDescTotalVaccinated } from './functions/functions'
+import { generateStateList, generateStateListWithDate, searhByName, sortAsc, sortAscTotalAffected, sortAscTotalAffectedWithDate, sortAscTotalConfirmed, sortAscTotalConfirmedWithDate, sortAscTotalVaccinated, sortAscTotalVaccinatedWithDate, sortDesc, sortDescTotalAffected, sortDescTotalAffectedWithDate, sortDescTotalConfirmed, sortDescTotalConfirmedWithDate, sortDescTotalVaccinated, sortDescTotalVaccinatedWithDate } from './functions/functions'
 import store from '../store/store';
 import { Routes, Route } from "react-router-dom";
 import StateDetails from './body/stateDetails/StateDetails';
@@ -52,14 +52,13 @@ export const CovidTracker = () => {
         return () => {
             const { covidTracker: { search: searchText } } = store.getState()
             setListData(searhByName(searchText, tempData))
-            dispatch(sortValue('asc'))
+            dispatch(sortValue(''))
         }
     }, [listData.length, search, tempData])
     // * sort
     useEffect(() => {
         return () => {
             const { covidTracker: { sort: sortText } } = store.getState()
-            console.log(listData.length)
             if(sortText === 'confirmedAscending') {
                 date ? 
                 setListData(sortAscTotalConfirmedWithDate([...listData], date)) :
@@ -71,18 +70,27 @@ export const CovidTracker = () => {
                 setListData(sortDescTotalConfirmed([...listData]))
             }
             if(sortText === 'affectedAscending') {
+                date ? 
+                setListData(sortAscTotalAffectedWithDate([...listData], date)) :
                 setListData(sortAscTotalAffected([...listData]))
             }
             if(sortText === 'affectedDescending') {
+                date ? 
+                setListData(sortDescTotalAffectedWithDate([...listData], date)) :
                 setListData(sortDescTotalAffected([...listData]))
             }
             if(sortText === 'vaccinatedAscending') {
+                date ? 
+                setListData(sortAscTotalVaccinatedWithDate([...listData], date)) :
                 setListData(sortAscTotalVaccinated([...listData]))
             }
             if(sortText === 'vaccinatedDescending') {
+                date ? 
+                setListData(sortDescTotalVaccinatedWithDate([...listData], date)) :
                 setListData(sortDescTotalVaccinated([...listData]))
             }
-            if(sortText === 'asc') setListData(sortAsc([...listData], 'name'))
+            if(sortText === 'stateAsc') setListData(sortAsc([...listData], 'name'))
+            if(sortText === 'stateDesc') setListData(sortDesc([...listData], 'name'))
         }
         }, [listData.length, sort])
 

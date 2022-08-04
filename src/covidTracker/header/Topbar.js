@@ -14,7 +14,7 @@ const Topbar = () => {
   useEffect(() => {
     return () => {
       const { covidTracker: { sort: sortText } } = store.getState()
-      sortText === 'asc' && setSort('asc')
+      !sortText && setSort('')
     }
   }, [stateSort])
   
@@ -40,7 +40,7 @@ const Topbar = () => {
     const value = e?.target?.value ?? null
     setDate(value)
     dispatch(dateValue(value))
-    dispatch(sortValue('asc'))
+    dispatch(sortValue(''))
   }
 
   // * sort
@@ -70,7 +70,9 @@ const Topbar = () => {
       <div className='mx-5 text-center'>
               <select name="sortby" placeholder='Sort by' value={sort} className='form-control'
                 onChange={e => sortChange(e)}>
-                <option value='asc'>Sort by</option>
+                <option value=''>Sort by</option>
+                <option value='stateAsc'>State Ascending</option>
+                <option value='stateDesc'>State Ascending</option>
                 <option value='confirmedAscending'>Confirmed Ascending</option>
                 <option value='confirmedDescending'>Confirmed Descending</option>
                 <option value='affectedAscending'>Affected Percentage Ascending</option>

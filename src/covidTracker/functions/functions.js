@@ -47,6 +47,24 @@ export const sortDescTotalAffected = (array) => {
        return array.sort((a,b) => b.value.total.deceased-a.value.total.deceased)
     } else return []
 }
+export const sortAscTotalAffectedWithDate = (array, date) => {
+    if(array && array.length) {
+       return array.sort((a,b) => {
+        const aa = a?.dates?.find(({name}) => name === date)?.value?.total?.deceased ?? 0
+        const bb = b?.dates?.find(({name}) => name === date)?.value?.total?.deceased ?? 0
+        return aa-bb
+       })
+    } else return []
+}
+export const sortDescTotalAffectedWithDate = (array, date) => {
+    if(array && array.length) {
+       return array.sort((a,b) =>  {
+        const aa = a?.dates?.find(({name}) => name === date)?.value?.total?.deceased ?? 0
+        const bb = b?.dates?.find(({name}) => name === date)?.value?.total?.deceased ?? 0
+        return bb-aa
+       })
+    } else return []
+}
 export const sortAscTotalVaccinated = (array) => {
     if(array && array.length) {
        return array.sort((a,b) => a.value.total.vaccinated1-b.value.total.vaccinated1)
@@ -55,6 +73,24 @@ export const sortAscTotalVaccinated = (array) => {
 export const sortDescTotalVaccinated = (array) => {
     if(array && array.length) {
        return array.sort((a,b) => b.value.total.vaccinated1-a.value.total.vaccinated1)
+    } else return []
+}
+export const sortAscTotalVaccinatedWithDate = (array, date) => {
+    if(array && array.length) {
+       return array.sort((a,b) => {
+        const aa = a?.dates?.find(({name}) => name === date)?.value?.total?.vaccinated1 ?? 0
+        const bb = b?.dates?.find(({name}) => name === date)?.value?.total?.vaccinated1 ?? 0
+        return aa-bb
+       })
+    } else return []
+}
+export const sortDescTotalVaccinatedWithDate = (array, date) => {
+    if(array && array.length) {
+       return array.sort((a,b) =>  {
+        const aa = a?.dates?.find(({name}) => name === date)?.value?.total?.vaccinated1 ?? 0
+        const bb = b?.dates?.find(({name}) => name === date)?.value?.total?.vaccinated1 ?? 0
+        return bb-aa
+       })
     } else return []
 }
 export const sortAsc = (array, column) => {
