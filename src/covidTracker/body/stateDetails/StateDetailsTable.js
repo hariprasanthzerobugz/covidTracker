@@ -3,10 +3,11 @@ import StateDetailsTableRow from './StateDetailsTableRow'
 
 const StateDetailsTable = ({ details, date }) => {
 
-    const render = details?.dates?.length && date ? 
-    details?.dates?.filter(({name}) => name === date)?.map((e, index) => <StateDetailsTableRow key={index} data={e} />) :
-    details?.dates?.map((e, index) => <StateDetailsTableRow key={index} data={e} />)
+    const dates = details?.dates?.length ? details.dates : []
+    const filtered = date ? dates.filter(({name}) => name === date) : dates
 
+    const render = filtered?.length ? filtered?.map((e, index) => <StateDetailsTableRow key={index} data={e} />) : <tr></tr>
+    
     return (
         <div className='mt-3'>
             <table className="table table-bordered">
@@ -26,7 +27,9 @@ const StateDetailsTable = ({ details, date }) => {
                     }
                 </tbody>
             </table>
-
+            {
+               !filtered?.length && <h5 className='text-center mt-3'>Result not found</h5>
+            }
         </div>
     )
 }
