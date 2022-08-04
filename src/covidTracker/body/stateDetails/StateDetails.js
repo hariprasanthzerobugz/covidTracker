@@ -25,10 +25,16 @@ const StateDetails = () => {
   const onChangeDate = e => {
     const value = e?.target?.value ?? null
     setDate(value)
+    setDistrict('')
   }
 
   // * district
   const [district, setDistrict] = useState('')
+  const districtChange = (e) => {
+    const value = e?.target?.value ?? ''
+    setDistrict(value)
+    setDate('')
+  }
 
   return (
     <div>
@@ -42,7 +48,7 @@ const StateDetails = () => {
 
         <div className='mx-5'>
               <select name="districts" placeholder='Districts' value={district} className='form-control'
-                onChange={e => setDistrict(e?.target?.value)}>
+                onChange={e => districtChange(e)}>
                 <option value=''>All</option>
                 {
                   details?.districts?.map(({ name }, index) => <option key={index} value={name}>{name}</option>)
