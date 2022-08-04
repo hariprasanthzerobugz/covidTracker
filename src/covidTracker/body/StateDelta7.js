@@ -1,18 +1,11 @@
 import React from 'react'
 
-const StateDelta7 = ({ details, isDate = false }) => {
+const StateDelta7 = ({ details }) => {
   return (
     <div className='text-center'>
       <div>Delta 7</div>
-      {
-        isDate ?
-          <div className='d-flex justify-content-evenly'>
-            <div>Confirmed</div>
-            <div>: {details?.confirmed ?? 0}</div>
-          </div>
-          :
-          <div>
-            <div className='d-flex justify-content-evenly'>
+      
+      <div className='d-flex justify-content-evenly'>
               <div>Confirmed</div>
               <div>:</div>
               <div>{details?.confirmed ?? 0}</div>
@@ -27,8 +20,6 @@ const StateDelta7 = ({ details, isDate = false }) => {
               <div>:</div>
               <div>{details?.tested ?? 0}</div>
             </div>
-          </div>
-      }
     </div>
   )
 }

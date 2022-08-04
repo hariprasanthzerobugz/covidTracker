@@ -18,10 +18,10 @@ const StateCardDetails = ({ value: { total, delta, delta7 }, district: { value: 
             <button type='button' className='btn btn-icon' onClick={e => changePreviousCarousel()}>{'<'}</button>
             {
                 carousel === 0 ? 
-                <StateTotal details={districtValue ? districtData?.value?.total ?? {} : (dateValue ? dateData?.value?.total : total)} isDate={dateValue} /> : 
+                <StateTotal details={districtValue ? districtData?.value?.total ?? {} : (dateValue ? dateData?.value?.total : total)} /> : 
                 carousel === 1 ? 
-                <StateDelta details={districtValue ? districtData?.value?.delta ?? {} : (dateValue ? dateData?.value?.delta : delta)} isDate={dateValue} /> : 
-                <StateDelta7 details={districtValue ? districtData?.value?.delta7 ?? {} : (dateValue ? dateData?.value?.delta7 : delta7)} isDate={dateValue} />
+                <StateDelta details={districtValue ? districtData?.value?.delta ?? {} : (dateValue ? dateData?.value?.delta : delta)} /> : 
+                <StateDelta7 details={districtValue ? districtData?.value?.delta7 ?? {} : (dateValue ? dateData?.value?.delta7 : delta7)} />
             }
             <button type='button' className='btn btn-icon' onClick={e => changeNextCarousel()}>{'>'}</button>
         </div>

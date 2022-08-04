@@ -7,6 +7,8 @@ import axios from 'axios';
 import { setStateList } from '../store/actions/actions';
 import { generateStateList, generateStateListWithDate, searhByName } from './functions/functions'
 import store from '../store/store';
+import { Routes, Route } from "react-router-dom";
+import StateDetails from './body/StateDetails';
 
 
 export const CovidTracker = () => {
@@ -58,7 +60,11 @@ export const CovidTracker = () => {
         <div>
             <Header />
             <Topbar />
-            <StateList list={listData} />
+            <Routes>
+        <Route path="/" element={<StateList list={listData} />} />
+        <Route path="state/:state" element={<StateDetails />} />
+      </Routes>
+            
         </div>
     )
 }

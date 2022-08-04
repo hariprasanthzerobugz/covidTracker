@@ -1,6 +1,7 @@
 import React, { memo, useState } from 'react'
 import { useSelector } from 'react-redux';
 import StateCardDetails from './StateCardDetails'
+import { Link } from "react-router-dom";
 
 const StateCard = ({ name, value, districts, dates }) => {
 
@@ -15,7 +16,7 @@ const StateCard = ({ name, value, districts, dates }) => {
       <div className="card">
         <div className='card-header'>
           <div className='d-flex justify-content-between'>
-            <h5>{name}</h5>
+            <h5><Link to={"state/"+name}>{name}</Link></h5>
             <div>
               <select name="districts" placeholder='Districts' value={district} className='form-control'
                 onChange={e => setDistrict(e?.target?.value)}>
