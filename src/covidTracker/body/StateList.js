@@ -10,7 +10,7 @@ const StateList = ({ list }) => {
         <div className='row'>
         <Topbar />
             {
-                render
+               list?.length ? render : <h5 className='text-center mt-3'>Result not found</h5>
             }
         </div>
     )
