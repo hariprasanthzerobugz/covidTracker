@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
-import { dateValue, searchValue } from '../../store/actions/actions';
+import { dateValue, searchValue, sortValue } from '../../store/actions/actions';
 import './topbar.css'
 
 const Topbar = () => {
@@ -29,6 +29,14 @@ const Topbar = () => {
     dispatch(dateValue(value))
   }
 
+  // * sort
+  const [sort, setSort] = useState('')
+  const sortChange = (e) => {
+    const value = e?.target?.value ?? ''
+    setSort(value)
+    dispatch(sortValue(value))
+  }
+
   return (
     <nav className="border-bottom d-flex header-bg justify-content-start mx-3 navbar navbar-dark second-nab-bar" >
 
@@ -44,6 +52,20 @@ const Topbar = () => {
         <span className='date-description'>FROM: 2020-01-30 - To: 2021-10-31</span>
         {/* FROM: 2020-01-30 - To: 2021-10-31 */}
       </div>
+
+      <div className='mx-5 text-center'>
+              <select name="sortby" placeholder='Sort by' value={sort} className='form-control'
+                onChange={e => sortChange(e)}>
+                <option value=''>Sort by</option>
+                <option value='confirmedAscending'>Confirmed Ascending</option>
+                <option value='confirmedDescending'>Confirmed Descending</option>
+                <option value='affectedAscending'>Affected Percentage Ascending</option>
+                <option value='affectedDescending'>Affected Percentage Descending</option>
+                <option value='vaccinatedAscending'>Vaccinated percentage Ascending</option>
+                <option value='vaccinatedDescending'>Vaccinated percentage Descending</option>
+              </select>
+      </div>
+
 
     </nav>
   )

@@ -6,6 +6,12 @@ export const searchValue = (key) => {
         payload: key,
     }
 }
+export const sortValue = (key) => {
+    return {
+        type: ActionTypes.SORT_VALUE,
+        payload: key,
+    }
+}
 export const setStateList = (key) => {
     return {
         type: ActionTypes.SET_STATE_LIST,
