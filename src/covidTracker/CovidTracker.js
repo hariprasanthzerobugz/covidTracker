@@ -3,8 +3,8 @@ import StateList from './body/StateList'
 import Header from './header/Header'
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
-import { setStateList } from '../store/actions/actions';
-import { generateStateList, generateStateListWithDate, searhByName, sortAsc, sortAscTotalAffected, sortAscTotalConfirmed, sortAscTotalVaccinated, sortDescTotalAffected, sortDescTotalConfirmed, sortDescTotalVaccinated } from './functions/functions'
+import { setStateList, sortValue } from '../store/actions/actions';
+import { generateStateList, generateStateListWithDate, searhByName, sortAscTotalAffected, sortAscTotalConfirmed, sortAscTotalVaccinated, sortDescTotalAffected, sortDescTotalConfirmed, sortDescTotalVaccinated } from './functions/functions'
 import store from '../store/store';
 import { Routes, Route } from "react-router-dom";
 import StateDetails from './body/stateDetails/StateDetails';
@@ -51,35 +51,35 @@ export const CovidTracker = () => {
     useEffect(() => {
         return () => {
             const { covidTracker: { search: searchText } } = store.getState()
-            listData?.length && setListData(searhByName(searchText, tempData))
+            setListData(searhByName(searchText, tempData))
+            dispatch(sortValue(''))
         }
-    }, [search])
+    }, [listData.length, search, tempData])
     // * sort
     useEffect(() => {
         return () => {
             const { covidTracker: { sort: sortText } } = store.getState()
-            const list = [...listData]
-            console.log(list);
-            // if(sortText === 'confirmedAscending') {
-            //     setListData(sortAscTotalConfirmed([...listData]))
-            // }
-            // if(sortText === 'confirmedDescending') {
-            //     setListData(sortDescTotalConfirmed([...listData]))
-            // }
-            // if(sortText === 'affectedAscending') {
-            //     setListData(sortAscTotalAffected([...listData]))
-            // }
-            // if(sortText === 'affectedDescending') {
-            //     setListData(sortDescTotalAffected([...listData]))
-            // }
-            // if(sortText === 'vaccinatedAscending') {
-            //     setListData(sortAscTotalVaccinated([...listData]))
-            // }
-            // if(sortText === 'vaccinatedDescending') {
-            //     setListData(sortDescTotalVaccinated([...listData]))
-            // }
+            console.log(listData.length)
+            if(sortText === 'confirmedAscending') {
+                setListData(sortAscTotalConfirmed([...listData]))
+            }
+            if(sortText === 'confirmedDescending') {
+                setListData(sortDescTotalConfirmed([...listData]))
+            }
+            if(sortText === 'affectedAscending') {
+                setListData(sortAscTotalAffected([...listData]))
+            }
+            if(sortText === 'affectedDescending') {
+                setListData(sortDescTotalAffected([...listData]))
+            }
+            if(sortText === 'vaccinatedAscending') {
+                setListData(sortAscTotalVaccinated([...listData]))
+            }
+            if(sortText === 'vaccinatedDescending') {
+                setListData(sortDescTotalVaccinated([...listData]))
+            }
         }
-    }, [sort])
+        }, [listData.length, sort])
 
     return (
         <div>
