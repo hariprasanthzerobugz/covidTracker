@@ -4,7 +4,7 @@ import Header from './header/Header'
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { setStateList } from '../store/actions/actions';
-import { generateStateList, generateStateListWithDate, searhByName } from './functions/functions'
+import { generateStateList, generateStateListWithDate, searhByName, sortAsc, sortAscTotalAffected, sortAscTotalConfirmed, sortAscTotalVaccinated, sortDescTotalAffected, sortDescTotalConfirmed, sortDescTotalVaccinated } from './functions/functions'
 import store from '../store/store';
 import { Routes, Route } from "react-router-dom";
 import StateDetails from './body/stateDetails/StateDetails';
@@ -56,13 +56,30 @@ export const CovidTracker = () => {
     }, [search])
     // * sort
     useEffect(() => {
-        const { covidTracker: { sort: sortText } } = store.getState()
         return () => {
-            console.log('sortText', sortText)
-            console.log('sort', sort)
+            const { covidTracker: { sort: sortText } } = store.getState()
+            const list = [...listData]
+            console.log(list);
+            // if(sortText === 'confirmedAscending') {
+            //     setListData(sortAscTotalConfirmed([...listData]))
+            // }
+            // if(sortText === 'confirmedDescending') {
+            //     setListData(sortDescTotalConfirmed([...listData]))
+            // }
+            // if(sortText === 'affectedAscending') {
+            //     setListData(sortAscTotalAffected([...listData]))
+            // }
+            // if(sortText === 'affectedDescending') {
+            //     setListData(sortDescTotalAffected([...listData]))
+            // }
+            // if(sortText === 'vaccinatedAscending') {
+            //     setListData(sortAscTotalVaccinated([...listData]))
+            // }
+            // if(sortText === 'vaccinatedDescending') {
+            //     setListData(sortDescTotalVaccinated([...listData]))
+            // }
         }
     }, [sort])
-
 
     return (
         <div>

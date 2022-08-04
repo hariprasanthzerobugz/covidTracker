@@ -9,6 +9,36 @@ export const searhByName = (value, listData) => {
         return listData
     }
 }
+export const sortAscTotalConfirmed = (array) => {
+    if(array && array.length) {
+       return array.sort((a,b) => a.value.total.confirmed-b.value.total.confirmed)
+    } else return []
+}
+export const sortDescTotalConfirmed = (array) => {
+    if(array && array.length) {
+       return array.sort((a,b) => b.value.total.confirmed-a.value.total.confirmed)
+    } else return []
+}
+export const sortAscTotalAffected = (array) => {
+    if(array && array.length) {
+       return array.sort((a,b) => a.value.total.deceased-b.value.total.deceased)
+    } else return []
+}
+export const sortDescTotalAffected = (array) => {
+    if(array && array.length) {
+       return array.sort((a,b) => b.value.total.deceased-a.value.total.deceased)
+    } else return []
+}
+export const sortAscTotalVaccinated = (array) => {
+    if(array && array.length) {
+       return array.sort((a,b) => a.value.total.vaccinated1-b.value.total.vaccinated1)
+    } else return []
+}
+export const sortDescTotalVaccinated = (array) => {
+    if(array && array.length) {
+       return array.sort((a,b) => b.value.total.vaccinated1-a.value.total.vaccinated1)
+    } else return []
+}
 export const sortAsc = (array, column) => {
     if(array && array.length) {
        return array.sort((a,b) => a[column]-b[column])
