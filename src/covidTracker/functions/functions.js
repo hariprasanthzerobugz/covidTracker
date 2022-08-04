@@ -9,3 +9,13 @@ export const searhByName = (value, listData) => {
         return listData
     }
 }
+export const sortAsc = (array, column) => {
+    if(array && array.length) {
+       return array.sort((a,b) => a[column]-b[column])
+    } else return []
+}
+export const sortDesc = (array, column) => {
+    if(array && array.length) {
+       return array.sort((a,b) => b[column]-a[column])
+    } else return []
+}

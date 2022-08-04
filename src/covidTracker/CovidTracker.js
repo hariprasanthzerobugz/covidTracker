@@ -17,7 +17,7 @@ export const CovidTracker = () => {
     const [tempData, setTempData] = useState([])
 
     // * store state
-    const { search } = useSelector((state) => state?.covidTracker);
+    const { search, sort } = useSelector((state) => state?.covidTracker);
 
     // * dispatch
     const dispatch = useDispatch();
@@ -47,22 +47,31 @@ export const CovidTracker = () => {
             stateListData()
         }
     }, [])
-    // * effects
+    // * search
     useEffect(() => {
         return () => {
             const { covidTracker: { search: searchText } } = store.getState()
             listData?.length && setListData(searhByName(searchText, tempData))
         }
     }, [search])
+    // * sort
+    useEffect(() => {
+        const { covidTracker: { sort: sortText } } = store.getState()
+        return () => {
+            console.log('sortText', sortText)
+            console.log('sort', sort)
+        }
+    }, [sort])
+
 
     return (
         <div>
             <Header />
             <Routes>
-        <Route path="/" element={<StateList list={listData} />} />
-        <Route path="state/:state" element={<StateDetails />} />
-      </Routes>
-            
+                <Route path="/" element={<StateList list={listData} />} />
+                <Route path="state/:state" element={<StateDetails />} />
+            </Routes>
+
         </div>
     )
 }
