@@ -52,7 +52,7 @@ const Topbar = () => {
   }
 
   return (
-    <nav className="border-bottom d-flex header-bg justify-content-start navbar navbar-dark p-0 bg-ghostwhite top-bar-class" >
+    <nav className="border-bottom d-flex header-bg justify-content-start navbar navbar-dark p-0 top-bar-class text-bg-light" >
 
       <div className="d-flex">
         <div className='form-label mt-2 mx-5' htmlFor='stateSearch'>State</div>

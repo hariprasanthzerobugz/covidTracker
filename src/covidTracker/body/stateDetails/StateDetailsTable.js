@@ -29,7 +29,7 @@ const StateDetailsTable = ({ details, date, district, sort }) => {
     return (
         <div className='state-list'>
             <table className="table table-bordered">
-                <thead className='state-list-table-header'>
+                <thead className='state-list-table-header text-bg-dark'>
                     <tr>
                         <th scope="col">{ district ? 'District' : 'Date' }</th>
                         <th scope="col">Confirmed</th>

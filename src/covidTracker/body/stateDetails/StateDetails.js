@@ -45,7 +45,7 @@ const StateDetails = () => {
 
   return (
     <div>
-      <nav className="border-bottom d-flex header-bg justify-content-start navbar navbar-dark top-bar-class bg-ghostwhite" >
+      <nav className="border-bottom d-flex header-bg justify-content-start navbar navbar-dark top-bar-class text-bg-light" >
 
         <div className="d-flex">
           <div className='form-label mt-2 mx-3' htmlFor='stateSearch'>{state}</div>

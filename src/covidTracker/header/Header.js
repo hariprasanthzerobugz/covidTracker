@@ -2,7 +2,7 @@ import React from 'react'
 
 const Header = () =>  {
   return (
-        <nav className="font-monospace fs-5 navbar navbar-light p-2 primary1-bg white-color header-class">
+        <nav className="font-monospace fs-5 navbar navbar-light p-2 header-class text-bg-primary">
             Covid Tracker - India
         </nav>
   )

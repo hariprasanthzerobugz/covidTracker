@@ -32,40 +32,10 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
-}
-
-.white-color {
-  color: #fff;
-}
-.bg-ghostwhite {
-  background: ghostwhite;
-}
-.primary1-clolor {
-  color: #A66CFF;
-}
-.primary2-clolor {
-  color: #9C9EFE;
-}
-.primary3-clolor {
-  color: #AFB4FF;
-}
-.primary4-clolor {
-  color: #B1E1FF;
-}
-.primary1-bg {
-  background: #A66CFF;
-}
-.primary2-bg {
-  background: #9C9EFE;
-}
-.primary3-bg {
-  background: #AFB4FF;
-}
-.primary4-bg {
-  background: #B1E1FF;
 }
 
 .header-class {
@@ -74,6 +44,7 @@
   z-index: 1 !important;
   width: 100% !important;
 }
+
 .state-list {
   margin-top: 8rem !important;
 }
@@ -81,6 +52,5 @@
 /* state list table */
 .state-list-table-header {
   position: sticky;
-    top: 5.7rem;
-    background: cadetblue;
+  top: 5.7rem;
 }
