@@ -14,9 +14,9 @@ const StateCard = ({ name, value, districts, dates }) => {
   return (
     <div className="col-sm-4 mt-3">
       <div className="card">
-        <div className='card-header'>
+        <div className='card-header state-card-header'>
           <div className='d-flex justify-content-between'>
-            <h5><Link to={"state/"+name}>{name}</Link></h5>
+            <h5><Link to={"state/"+name} className='state-card-state-name'>{name}</Link></h5>
             <div>
               <select name="districts" placeholder='Districts' value={district} className='form-control'
                 onChange={e => setDistrict(e?.target?.value)}>
@@ -28,7 +28,7 @@ const StateCard = ({ name, value, districts, dates }) => {
             </div>
           </div>
         </div>
-        <div className="card-body">
+        <div className="card-body state-card-body">
           <StateCardDetails 
           value={value} 
           district={ { value: district ? true : false, data: districts.find(({name})=>name === district) } } 

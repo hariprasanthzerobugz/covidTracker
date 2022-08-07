@@ -3,7 +3,7 @@ import React from 'react'
 const StateTotal = ({ details }) => {
   return (
     <div className='text-center'>
-      <div>Total</div>
+      <div className='state-card-title'>Total</div>
       
             <div className='d-flex justify-content-evenly'>
               <div>Confirmed</div>

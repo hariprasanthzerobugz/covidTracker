@@ -3,7 +3,7 @@ import React from 'react'
 const StateDelta7 = ({ details }) => {
   return (
     <div className='text-center'>
-      <div>Delta 7</div>
+      <div className='state-card-title'>Delta 7</div>
       
       <div className='d-flex justify-content-evenly'>
               <div>Confirmed</div>

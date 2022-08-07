@@ -8,12 +8,14 @@ const StateList = ({ list }) => {
 
     return (
         <div>
-        <Topbar />
-        <div className='container-fluid row state-list'> 
-            {
-                list?.length ? render : <h5 className='text-center mt-3'>Result not found</h5>
-            }
-        </div>
+            <Topbar />
+            <div>
+                <div className='container-fluid row state-list'>
+                    {
+                        list?.length ? render : <h5 className='text-center mt-3'>Result not found</h5>
+                    }
+                </div>
+            </div>
         </div>
     )
 }

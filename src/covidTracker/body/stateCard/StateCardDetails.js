@@ -15,7 +15,7 @@ const StateCardDetails = ({ value: { total, delta, delta7 }, district: { value: 
 
     return (
         <div className='d-flex justify-content-between'>
-            <button type='button' className='btn btn-icon' onClick={e => changePreviousCarousel()}>{'<'}</button>
+            <button type='button' className='btn btn-icon carousel-button' onClick={e => changePreviousCarousel()}>{'<'}</button>
             {
                 carousel === 0 ? 
                 <StateTotal details={districtValue ? districtData?.value?.total ?? {} : (dateValue ? dateData?.value?.total : total)} /> : 
@@ -23,7 +23,7 @@ const StateCardDetails = ({ value: { total, delta, delta7 }, district: { value: 
                 <StateDelta details={districtValue ? districtData?.value?.delta ?? {} : (dateValue ? dateData?.value?.delta : delta)} /> : 
                 <StateDelta7 details={districtValue ? districtData?.value?.delta7 ?? {} : (dateValue ? dateData?.value?.delta7 : delta7)} />
             }
-            <button type='button' className='btn btn-icon' onClick={e => changeNextCarousel()}>{'>'}</button>
+            <button type='button' className='btn btn-icon carousel-button' onClick={e => changeNextCarousel()}>{'>'}</button>
         </div>
     )
 }

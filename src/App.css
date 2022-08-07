@@ -53,17 +53,50 @@
 .state-list-table-header {
   position: sticky;
   top: 5.7rem !important;
-} 
+}
+
 @media (max-width: 858px) {
   .state-list {
     margin-top: 12rem !important;
   }
+
   .state-list-table-header {
     top: 6rem !important;
   }
 }
+
 @media (max-width: 708px) {
   .state-list-table-header {
     top: 8rem !important;
   }
+}
+
+/* State Card */
+.state-card-title {
+  font-size: larger;
+  font-weight: 700;
+  font-family: auto;
+  color: #000;
+}
+.state-card-state-name:hover {
+  color: #F32424;
+  text-decoration: underline;
+}
+.state-card-state-name {
+  text-decoration: none;
+  color: blue;
+  font-family: initial;
+}
+.state-card-header {
+  background: inherit;
+}
+.state-card-body {
+  background: inherit;
+  color: inherit;
+}
+.carousel-button {
+  color: blue !important;
+}
+.carousel-button:hover {
+  color: #F32424 !important;
 }
