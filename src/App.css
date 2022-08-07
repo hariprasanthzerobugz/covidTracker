@@ -45,14 +45,19 @@
   width: 100% !important;
 }
 
+.convid-tracker-header {
+  background: var(--primary-color);
+  color: #fff;
+}
+
 .state-list {
-  margin-top: 8rem !important;
+  margin-top: 7rem !important;
 }
 
 /* state list table */
 .state-list-table-header {
   position: sticky;
-  top: 5.7rem !important;
+  top: 6.2rem !important;
 }
 
 @media (max-width: 858px) {
@@ -77,26 +82,43 @@
   font-weight: 700;
   font-family: auto;
   color: #000;
+  text-decoration: underline;
 }
 .state-card-state-name:hover {
-  color: #F32424;
+  color: var(--link-hover-color);
   text-decoration: underline;
 }
 .state-card-state-name {
   text-decoration: none;
-  color: blue;
+  color: var(--primary-color);
   font-family: initial;
 }
 .state-card-header {
   background: inherit;
 }
 .state-card-body {
-  background: inherit;
+  background: azure;
   color: inherit;
+  font-family: cursive;
 }
 .carousel-button {
-  color: blue !important;
+  color: var(--primary-color) !important;
+  background: #D4F6CC !important;
 }
-.carousel-button:hover {
-  color: #F32424 !important;
+.state-name {
+  color: var(--primary-color);
+  font-size: larger;
+  font-weight: 700;
+  font-family: auto;
+}
+
+/* table body */
+.state-table-body {
+  background: azure;
+  font-family: cursive;
+}
+
+:root {
+  --primary-color: #24A19C;
+  --link-hover-color: #5800FF;
 }

@@ -48,7 +48,7 @@ const StateDetails = () => {
       <nav className="border-bottom d-flex header-bg justify-content-start navbar navbar-dark top-bar-class text-bg-light" >
 
         <div className="d-flex">
-          <div className='form-label mt-2 mx-3' htmlFor='stateSearch'>{state}</div>
+          <div className='form-label mt-2 mx-3 state-name' htmlFor='stateSearch'>{state}</div>
           <input type="date" placeholder="Date" className='form-control' id='dateSearch' value={date}
             onChange={e => onChangeDate(e)} name="date" min="2020-01-30" max="2021-10-31" />
         </div>
@@ -78,7 +78,9 @@ const StateDetails = () => {
 
       </nav>
 
+      <div className='container-fluid'>
       <StateDetailsTable details={details} date={date} district={district} sort={sort} />
+      </div>
 
     </div>
   )

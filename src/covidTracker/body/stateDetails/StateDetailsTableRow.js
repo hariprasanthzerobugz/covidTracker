@@ -3,7 +3,7 @@ import React from 'react'
 const StateDetailsTableRow = ({ data: { name = '', value: { total = {}, delta = {}, delta7 = {} } } }) => {
     return (
         <tr>
-            <td className='text-center align-middle'>{name ?? ''}</td>
+            <td className='text-center align-middle'><b>{name ?? ''}</b></td>
             <td className='text-center align-middle'>{total.confirmed ?? 0}</td>
             <td className='text-center align-middle'>{total.recovered ?? 0}</td>
             <td className='text-center align-middle'>{total.deceased ?? 0}</td>
