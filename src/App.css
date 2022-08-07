@@ -52,5 +52,18 @@
 /* state list table */
 .state-list-table-header {
   position: sticky;
-  top: 5.7rem;
+  top: 5.7rem !important;
+} 
+@media (max-width: 858px) {
+  .state-list {
+    margin-top: 12rem !important;
+  }
+  .state-list-table-header {
+    top: 6rem !important;
+  }
+}
+@media (max-width: 708px) {
+  .state-list-table-header {
+    top: 8rem !important;
+  }
 }
