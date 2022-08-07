@@ -77,3 +77,10 @@
 .state-list {
   margin-top: 8rem !important;
 }
+
+/* state list table */
+.state-list-table-header {
+  position: sticky;
+    top: 5.7rem;
+    background: cadetblue;
+}
