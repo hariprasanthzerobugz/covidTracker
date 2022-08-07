@@ -27,7 +27,7 @@ const StateDetailsTable = ({ details, date, district, sort }) => {
     const render = final?.length ? final?.map((e, index) => <StateDetailsTableRow key={index} data={e} />) : <tr></tr>
     
     return (
-        <div className='mt-3'>
+        <div className='state-list'>
             <table className="table table-bordered">
                 <thead>
                     <tr>

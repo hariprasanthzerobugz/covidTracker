@@ -52,10 +52,10 @@ const Topbar = () => {
   }
 
   return (
-    <nav className="border-bottom d-flex header-bg justify-content-start mx-3 navbar navbar-dark second-nab-bar" >
+    <nav className="border-bottom d-flex header-bg justify-content-start navbar navbar-dark p-0 bg-ghostwhite top-bar-class" >
 
       <div className="d-flex">
-        <div className='form-label mt-2 mx-3' htmlFor='stateSearch'>State</div>
+        <div className='form-label mt-2 mx-5' htmlFor='stateSearch'>State</div>
         <input type="search" placeholder="Search" className='form-control' id='stateSearch' value={search}
           onChange={e => onChange(e)} onKeyUp={e => checkForEnterKey(e)} name="search" />
       </div>

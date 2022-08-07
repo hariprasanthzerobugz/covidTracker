@@ -7,11 +7,13 @@ const StateList = ({ list }) => {
     const render = list?.map(({ name, value, districts, dates }, index) => <StateCard key={index} name={name} value={value} districts={districts} dates={dates} />)
 
     return (
-        <div className='row'>
+        <div>
         <Topbar />
+        <div className='container-fluid row state-list'> 
             {
-               list?.length ? render : <h5 className='text-center mt-3'>Result not found</h5>
+                list?.length ? render : <h5 className='text-center mt-3'>Result not found</h5>
             }
+        </div>
         </div>
     )
 }
